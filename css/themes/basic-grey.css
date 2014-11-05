@@ -98,8 +98,12 @@
   border-top: 1px solid #808080;
 }
 #ui-theme-basic-grey .ui-autocomplete-field-title {
-  text-align: left;
-  font-size: 1.3em;
+   font-size: 1.3em;
+   overflow: hidden;
+   text-align: left;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 90%;
 }
 #ui-theme-basic-grey .ui-autocomplete-field-term {
   font-weight: bold;
