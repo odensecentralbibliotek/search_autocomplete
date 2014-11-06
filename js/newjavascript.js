@@ -76,8 +76,7 @@
 		              }
 		              // Internal URL:
 		              else if (Drupal.settings.search_autocomplete[key].type == 'internal' || Drupal.settings.search_autocomplete[key].type == 'view') {
-		                 if ($('#edit-search-type-1:checked').val()) {
-                                $.getJSON(Drupal.settings.search_autocomplete[key].datas + request.term, { }, function (results) {
+		                $.getJSON(Drupal.settings.search_autocomplete[key].datas + request.term, { }, function (results) {
 		                  // Only return the number of values set in the settings.
 		                  if (!results.length && no_results) {
 		                      results = [jQuery.parseJSON(no_results.replace(/\[search-phrase\]/g, request.term))];
@@ -88,12 +87,6 @@
 		                  response(results);
 		                });
 		              }
-                              else if ($('#edit-search-type-0:checked').val()) {
-                                    $.getJSON(Drupal.settings.basePath + 'ting/autocomplete', {
-                                        query: request.term
-                                    }, response);
-                                }
-                            }
 		              // Static resources:
 		              else if (Drupal.settings.search_autocomplete[key].type == 'static') {
 		                var results = $.ui.autocomplete.filter(Drupal.settings.search_autocomplete[key].datas, request.term);
