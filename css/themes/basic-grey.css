@@ -85,6 +85,9 @@
   border-radius: 0px;
   background-color: #f6f6f2;
 }
+#ui-theme-basic-grey.ui-menu .ui-menu-item a {
+    background: none;
+}
 #ui-theme-basic-grey .ui-autocomplete-fields {
   padding: 5px 6px;
   overflow: hidden;
@@ -98,7 +101,7 @@
    text-align: left;
    text-overflow: ellipsis;
    white-space: nowrap;
-   width: 90%;
+   width: 95%;
 }
 #ui-theme-basic-grey .ui-autocomplete-field-term {
   font-weight: bold;
