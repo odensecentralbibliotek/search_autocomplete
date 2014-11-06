@@ -90,7 +90,7 @@
   overflow: hidden;
 }
 #ui-theme-basic-grey .ui-menu-item-first {
-  border-top: 1px solid #808080;
+  //border-top: 1px solid #808080;
 }
 #ui-theme-basic-grey .ui-autocomplete-field-title {
    font-size: 1.3em;
