@@ -159,7 +159,7 @@ function search_autocomplete_install() {
     'min_char'      => $trigger,
     'max_sug'       => $limit,
     'no_results'    => json_encode(array(
-      'label' => 'No results found for <b>[search-phrase]</b>.<br/>Click to perform full search.',
+      'label' => 'Ingen resultater fundet.',
       'value' => '[search-phrase]',
       'link'  => '',
       'group' => array(
@@ -167,7 +167,7 @@ function search_autocomplete_install() {
       ),
     )),
     'all_results'  => json_encode(array(
-      'label' => 'View all results for <b>[search-phrase]</b>.',
+      'label' => 'Vis alle resulater.',
       'value' => '[search-phrase]',
       'link'  => '',
       'group' => array(
@@ -191,7 +191,7 @@ function search_autocomplete_install() {
     'min_char'      => $trigger,
     'max_sug'       => $limit,
     'no_results'    => json_encode(array(
-        'label' => 'No results found for <b>[search-phrase]</b>.<br/> Click to perform full search.',
+        'label' => 'Ingen resultater fundet.',
         'value' => '[search-phrase]',
         'link'  => '',
         'group' => array(
@@ -199,7 +199,7 @@ function search_autocomplete_install() {
         ),
     )),
     'all_results'   => json_encode(array(
-        'label' => 'View all results for <b>[search-phrase]</b>.',
+        'label' => 'Vis alle resultater.',
         'value' => '[search-phrase]',
         'link'  => '',
         'group' => array(
@@ -223,7 +223,7 @@ function search_autocomplete_install() {
     'min_char'      => $trigger,
     'max_sug'       => $limit,
     'no_results'    => json_encode(array(
-        'label' => 'No results found for <b>[search-phrase]</b>.<br/>Click to perform full search.',
+        'label' => 'Ingen resultater fundet.',
         'value' => '[search-phrase]',
         'link'  => '',
         'group' => array(
@@ -231,7 +231,7 @@ function search_autocomplete_install() {
         ),
     )),
     'all_results'  => json_encode(array(
-        'label' => 'View all results for <b>[search-phrase]</b>.',
+        'label' => 'Vis alle resultater.',
         'value' => '[search-phrase]',
         'link'  => '',
         'group' => array(
@@ -388,7 +388,7 @@ function search_autocomplete_update_7408(&$sandbox) {
 function search_autocomplete_update_7410(&$sandbox) {
   if (db_field_exists('search_autocomplete_forms', 'no_results')) {
     db_update('search_autocomplete_forms') // Table name no longer needs {}
-      ->fields(array('no_results'   => '-- No results found for <b>[search-phrase]</b> --'))
+      ->fields(array('no_results'   => '-- Ingen resultater fundet. --'))
       ->execute();
   }
   return (t('Update no_results field default value has been done.'));
@@ -415,7 +415,7 @@ function search_autocomplete_update_7411(&$sandbox) {
   }
   db_update('search_autocomplete_forms') // Table name no longer needs {}
   ->fields(array('no_results'   => json_encode(array(
-    'label' => 'No results found for <b>[search-phrase]</b>.<br/>Click to perform full search.',
+    'label' => 'Ingen resultater fundet.',
     'value' => '[search-phrase]',
     'link'  => '',
     'group' => array(
@@ -434,7 +434,7 @@ function search_autocomplete_update_7411(&$sandbox) {
   }
   db_update('search_autocomplete_forms') // Table name no longer needs {}
   ->fields(array('all_results'   => json_encode(array(
-    'label' => 'View all results for <b>[search-phrase]</b>.',
+    'label' => 'Vis alle resultater.',
     'value' => '[search-phrase]',
     'link'  => '',
     'group' => array(
