@@ -42,7 +42,7 @@
 		elem.data("item.autocomplete", item)
     .appendTo(ul);
     
-    Drupal.attachBehaviors(elem);
+    //Drupal.attachBehaviors(elem); seems this retriggers already registered behaviours. is it needed ? .availability doesent have own js triggers.
     return elem;
   };
 
