@@ -49,6 +49,7 @@ class search_autocomplete_views_plugin_style extends views_plugin_style {
       '#default_value'  => $this->options['input_label'],
       '#disabled'       => empty($all_view_fields),
       '#required'       => TRUE,
+      '#multiple'       => TRUE,
       '#options'        => $all_view_fields,
     );
 
