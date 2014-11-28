@@ -198,99 +198,143 @@ function search_autocomplete_view_autocomplete() {
   $view_nodes->api_version = '3.0';
   $view_nodes->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
-  /* Display: Master */
-  $handler = $view_nodes->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Node title suggestions for autocompletion';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'plus';
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'search_autocomplete';
-  $handler->display->display_options['style_options']['group_by'] = 'type';
-  $handler->display->display_options['style_options']['input_label'] = 'title';
-  $handler->display->display_options['style_options']['input_link'] = 'view_node';
-  $handler->display->display_options['style_options']['output_fields'] = array(
-    'title' => 'title',
-    'name' => 'name',
-    'comment_count' => 'comment_count',
-  );
-  /* Relationship: Content: Author */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'node';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'author';
-  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Field: Content: Comment count */
-  $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
-  $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
-  $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
-  $handler->display->display_options['fields']['comment_count']['label'] = '';
-  $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['comment_count']['separator'] = ' ';
-  $handler->display->display_options['fields']['comment_count']['suffix'] = ' comment(s)';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
-  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content revision: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'node_revision';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'title';
-  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'filter';
-  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-  );
+/* Display: Master */
+$handler = $view_nodes->new_display('default', 'Master', 'default');
+$handler->display->display_options['title'] = 'Node title suggestions for autocompletion';
+$handler->display->display_options['use_more_always'] = FALSE;
+$handler->display->display_options['use_more_text'] = 'plus';
+$handler->display->display_options['access']['type'] = 'perm';
+$handler->display->display_options['cache']['type'] = 'none';
+$handler->display->display_options['query']['type'] = 'views_query';
+$handler->display->display_options['query']['options']['query_comment'] = FALSE;
+$handler->display->display_options['exposed_form']['type'] = 'basic';
+$handler->display->display_options['exposed_form']['options']['submit_button'] = 'Appliquer';
+$handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+$handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
+$handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+$handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
+$handler->display->display_options['pager']['type'] = 'some';
+$handler->display->display_options['pager']['options']['items_per_page'] = '8';
+$handler->display->display_options['pager']['options']['offset'] = '0';
+$handler->display->display_options['style_plugin'] = 'search_autocomplete';
+$handler->display->display_options['style_options']['group_by'] = 'type';
+$handler->display->display_options['style_options']['input_label'] = 'title';
+$handler->display->display_options['style_options']['input_link'] = 'view_node';
+$handler->display->display_options['style_options']['output_fields'] = array(
+  'title' => 'title',
+  'term_node_tid' => 'term_node_tid',
+);
+/* Forbindelse: Indhold: Forfatter */
+$handler->display->display_options['relationships']['uid']['id'] = 'uid';
+$handler->display->display_options['relationships']['uid']['table'] = 'node';
+$handler->display->display_options['relationships']['uid']['field'] = 'uid';
+/* Forbindelse: Indhold: Taksonomitermer på node */
+$handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+$handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+$handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+$handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+  'ding_content_tags' => 'ding_content_tags',
+  'event_category' => 0,
+  'event_target' => 0,
+  'image_tags' => 0,
+  'news_category' => 0,
+  'newsletter' => 0,
+);
+/* Felt: Indhold: Link */
+$handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+$handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+$handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+$handler->display->display_options['fields']['view_node']['label'] = '';
+$handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+/* Felt: Indhold: Titel */
+$handler->display->display_options['fields']['title']['id'] = 'title';
+$handler->display->display_options['fields']['title']['table'] = 'node';
+$handler->display->display_options['fields']['title']['field'] = 'title';
+$handler->display->display_options['fields']['title']['label'] = '';
+$handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+/* Felt: Indhold: Type */
+$handler->display->display_options['fields']['type']['id'] = 'type';
+$handler->display->display_options['fields']['type']['table'] = 'node';
+$handler->display->display_options['fields']['type']['field'] = 'type';
+$handler->display->display_options['fields']['type']['label'] = '';
+$handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+/* Felt: Ord i ordforråd: Navn */
+$handler->display->display_options['fields']['name']['id'] = 'name';
+$handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+$handler->display->display_options['fields']['name']['field'] = 'name';
+$handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
+$handler->display->display_options['fields']['name']['label'] = '';
+$handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['name']['convert_spaces'] = TRUE;
+/* Felt: Indhold: Alle taksonomitermer */
+$handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
+$handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
+$handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
+$handler->display->display_options['fields']['term_node_tid']['label'] = '';
+$handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['term_node_tid']['separator'] = ' | ';
+$handler->display->display_options['fields']['term_node_tid']['link_to_taxonomy'] = FALSE;
+$handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
+$handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
+  'ding_content_tags' => 'ding_content_tags',
+  'event_category' => 0,
+  'event_target' => 0,
+  'image_tags' => 0,
+  'news_category' => 0,
+  'newsletter' => 0,
+);
+/* Sorteringskriterie: Indhold: Titel */
+$handler->display->display_options['sorts']['title']['id'] = 'title';
+$handler->display->display_options['sorts']['title']['table'] = 'node';
+$handler->display->display_options['sorts']['title']['field'] = 'title';
+/* Filterkriterie: Indhold: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'ding_event' => 'ding_event',
+  'ding_library' => 'ding_library',
+  'ding_news' => 'ding_news',
+  'simplenews' => 'simplenews',
+  'ding_page' => 'ding_page',
+);
+$handler->display->display_options['filters']['type']['group'] = 1;
+/* Filterkriterie: Indhold: Udgivet */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'node';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['value'] = 1;
+$handler->display->display_options['filters']['status']['group'] = 1;
+$handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filterkriterie: Global: Kombinér felter filter */
+$handler->display->display_options['filters']['combine']['id'] = 'combine';
+$handler->display->display_options['filters']['combine']['table'] = 'views';
+$handler->display->display_options['filters']['combine']['field'] = 'combine';
+$handler->display->display_options['filters']['combine']['operator'] = 'contains';
+$handler->display->display_options['filters']['combine']['group'] = 1;
+$handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+$handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+$handler->display->display_options['filters']['combine']['expose']['label'] = 'Kombinér felter filter';
+$handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+$handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+$handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  6 => 0,
+  4 => 0,
+  7 => 0,
+  5 => 0,
+  3 => 0,
+);
+$handler->display->display_options['filters']['combine']['fields'] = array(
+  'title' => 'title',
+  'name' => 'name',
+);
 
-  /* Display: Page */
-  $handler = $view_nodes->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'nodes-autocomplete';
+/* Display: Page */
+$handler = $view_nodes->new_display('page', 'Page', 'page');
+$handler->display->display_options['path'] = 'nodes-autocomplete';
   /* Add the view */
   $views[$view_nodes->name] = $view_nodes;
 
