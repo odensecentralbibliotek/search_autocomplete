@@ -76,7 +76,7 @@
 		              }
 		              // Internal URL:
 		              else if (Drupal.settings.search_autocomplete[key].type == 'internal' || Drupal.settings.search_autocomplete[key].type == 'view') {
-		                 if ($('#edit-search-type-1:checked').val()) {
+		                 if ($('#edit-search-type-1:checked').val() && window.location.hostname != 'langelandbibliotek.dk') {
                                 $.getJSON(Drupal.settings.search_autocomplete[key].datas + request.term, { }, function (results) {
 		                  // Only return the number of values set in the settings.
 		                  if (!results.length && no_results) {
