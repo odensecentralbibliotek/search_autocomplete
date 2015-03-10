@@ -222,7 +222,6 @@ $handler->display->display_options['style_options']['input_label'] = 'title';
 $handler->display->display_options['style_options']['input_link'] = 'view_node';
 $handler->display->display_options['style_options']['output_fields'] = array(
   'title' => 'title',
-  'term_node_tid' => 'term_node_tid',
 );
 /* Forbindelse: Indhold: Forfatter */
 $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -266,24 +265,9 @@ $handler->display->display_options['fields']['name']['field'] = 'name';
 $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
 $handler->display->display_options['fields']['name']['label'] = '';
 $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['name']['hide_empty'] = TRUE;
+$handler->display->display_options['fields']['name']['hide_alter_empty'] = FALSE;
 $handler->display->display_options['fields']['name']['convert_spaces'] = TRUE;
-/* Felt: Indhold: Alle taksonomitermer */
-$handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
-$handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
-$handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
-$handler->display->display_options['fields']['term_node_tid']['label'] = '';
-$handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
-$handler->display->display_options['fields']['term_node_tid']['separator'] = ' | ';
-$handler->display->display_options['fields']['term_node_tid']['link_to_taxonomy'] = FALSE;
-$handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
-$handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
-  'ding_content_tags' => 'ding_content_tags',
-  'event_category' => 0,
-  'event_target' => 0,
-  'image_tags' => 0,
-  'news_category' => 0,
-  'newsletter' => 0,
-);
 /* Sorteringskriterie: Indhold: Titel */
 $handler->display->display_options['sorts']['title']['id'] = 'title';
 $handler->display->display_options['sorts']['title']['table'] = 'node';
