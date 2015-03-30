@@ -114,10 +114,14 @@
                                $('<div class="search-overlay--wrapper"><div class="search-overlay--inner"><i class="icon-spinner icon-spin search-overlay--icon"></i><p class="search-overlay--text">' + Drupal.t('Searching please wait...') + '</p><p class="cancel"><a href="#">' + Drupal.t('Cancel') + '</a></p></div></div>').prependTo('body');
 		              if (Drupal.settings.search_autocomplete[key].auto_redirect == 1 && ui.item.link) {
 		                document.location.href = ui.item.link;
-		              } else if (Drupal.settings.search_autocomplete[key].auto_submit == 1 && ui.item.value) {
+		              } else if (Drupal.settings.search_autocomplete[key].auto_submit == 1 && ui.item.value && event.which != 13) {
 		                  $(this).val(ui.item.value);
 		                  $(this).closest("form").submit();
 		              }
+                              else if(event.which == 13) //submit form on enter press.
+                              {
+                                  $(this).closest("form").submit();
+                              }
 //		              } else {
 //			            	event.preventDefault();
 //		              }
