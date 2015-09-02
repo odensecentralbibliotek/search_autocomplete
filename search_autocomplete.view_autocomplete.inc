@@ -222,11 +222,8 @@ $handler->display->display_options['style_options']['input_label'] = 'title';
 $handler->display->display_options['style_options']['input_link'] = 'view_node';
 $handler->display->display_options['style_options']['output_fields'] = array(
   'title' => 'title',
+  'term_node_tid' => 'term_node_tid',
 );
-/* Forbindelse: Indhold: Forfatter */
-$handler->display->display_options['relationships']['uid']['id'] = 'uid';
-$handler->display->display_options['relationships']['uid']['table'] = 'node';
-$handler->display->display_options['relationships']['uid']['field'] = 'uid';
 /* Forbindelse: Indhold: Taksonomitermer på node */
 $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
 $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
@@ -265,9 +262,25 @@ $handler->display->display_options['fields']['name']['field'] = 'name';
 $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
 $handler->display->display_options['fields']['name']['label'] = '';
 $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-$handler->display->display_options['fields']['name']['hide_empty'] = TRUE;
-$handler->display->display_options['fields']['name']['hide_alter_empty'] = FALSE;
 $handler->display->display_options['fields']['name']['convert_spaces'] = TRUE;
+/* Felt: Indhold: Alle taksonomitermer */
+$handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
+$handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
+$handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
+$handler->display->display_options['fields']['term_node_tid']['label'] = '';
+$handler->display->display_options['fields']['term_node_tid']['exclude'] = TRUE;
+$handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['term_node_tid']['separator'] = ' | ';
+$handler->display->display_options['fields']['term_node_tid']['link_to_taxonomy'] = FALSE;
+$handler->display->display_options['fields']['term_node_tid']['limit'] = TRUE;
+$handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
+  'event_category' => 'event_category',
+  'news_category' => 'news_category',
+  'newsletter' => 'newsletter',
+  'ding_content_tags' => 'ding_content_tags',
+  'event_target' => 0,
+  'image_tags' => 0,
+);
 /* Sorteringskriterie: Indhold: Titel */
 $handler->display->display_options['sorts']['title']['id'] = 'title';
 $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -313,12 +326,25 @@ $handler->display->display_options['filters']['combine']['expose']['remember_rol
 );
 $handler->display->display_options['filters']['combine']['fields'] = array(
   'title' => 'title',
-  'name' => 'name',
 );
 
 /* Display: Page */
 $handler = $view_nodes->new_display('page', 'Page', 'page');
 $handler->display->display_options['path'] = 'nodes-autocomplete';
+$translatables['nodes_autocomplete'] = array(
+  t('Master'),
+  t('Node title suggestions for autocompletion'),
+  t('plus'),
+  t('Appliquer'),
+  t('Gendan'),
+  t('Trier par'),
+  t('Stigende'),
+  t('Faldende'),
+  t('term'),
+  t('Kombinér felter filter'),
+  t('Page'),
+  t('mere'),
+);
   /* Add the view */
   $views[$view_nodes->name] = $view_nodes;
 
