@@ -19,6 +19,10 @@
  */
 
 /* AUTOCOMPLETE */
+#ui-theme-basic-grey
+{
+    z-index: 1000 !important;
+}
 .ui-theme-basic-grey.ui-autocomplete {
   position: absolute;
   cursor: default;
@@ -95,13 +99,17 @@
 #ui-theme-basic-grey .ui-menu-item-first {
   //border-top: 1px solid #808080;
 }
-#ui-theme-basic-grey .ui-autocomplete-field-title {
+#ui-theme-basic-grey .ui-autocomplete-field-title,.ui-autocomplete-field {
    font-size: 1.3em;
    overflow: hidden;
    text-align: left;
    text-overflow: ellipsis;
    white-space: nowrap;
    width: 95%;
+}
+.ui-autocomplete-field
+{
+    
 }
 #ui-theme-basic-grey .ui-autocomplete-field-term {
   font-weight: bold;
@@ -132,6 +140,7 @@ ul#ui-theme-basic-grey.ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-co
     background: #C2C5C2;
     cursor: pointer;
 }
+
 ul#ui-theme-basic-grey.ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all li.ui-menu-item-first.ui-menu-item:hover
 {
     background: #C2C5C2;

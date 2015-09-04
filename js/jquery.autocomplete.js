@@ -89,9 +89,7 @@
 		                });
 		              }
                               else if ($('#edit-search-type-0:checked').val()) {
-                                    $.getJSON(Drupal.settings.basePath + 'ting/autocomplete', {
-                                        query: request.term
-                                    }, response);
+                                    $.getJSON(Drupal.settings.basePath + 'ting/autocomplete/' + request.term + "/" ,{},response);
                                 }
                             }
 		              // Static resources:
