@@ -21,7 +21,7 @@
 /* AUTOCOMPLETE */
 #ui-theme-basic-grey
 {
-    z-index: 1000 !important;
+    z-index: 800 !important;
 }
 .ui-theme-basic-grey.ui-autocomplete {
   position: absolute;
