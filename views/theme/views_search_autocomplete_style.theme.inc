@@ -46,9 +46,9 @@ function template_preprocess_views_search_autocomplete_style(&$vars) {
 
     $object = array();
 
-    /* ----------------
-     * Build the link...
-     * ----------------  */
+        /* ----------------
+         * Build the link...
+         * ----------------  */
 
     // Extract the URL...
     $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
@@ -67,14 +67,14 @@ function template_preprocess_views_search_autocomplete_style(&$vars) {
      * Build the array of output fields...
      * ----------------  */
     $object['fields'] = array();
-    foreach ($style_options['output_fields'] as $field_name) {
-      // Add the field if the value is not null.
-      if (array_key_exists($field_name, $row) && $row[$field_name] && $row[$field_name]->content) {
-        $object['fields'][$field_name] = trim($row[$field_name]->label . ' ' . $row[$field_name]->content);
-      }
-    }
+        foreach ($style_options['output_fields'] as $field_name) {
+            // Add the field if the value is not null.
+            if (array_key_exists($field_name, $row) && $row[$field_name] && $row[$field_name]->content) {
+                $object['fields'][$field_name] = filter_xss(htmlspecialchars_decode(trim($row[$field_name]->label . ' ' . $row[$field_name]->content), ENT_QUOTES), array('a', 'em', 'strong', 'cite', 'blockquote', 'code', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'img'));
+            }
+        }
 
-    if ($style_options['group_by']) {
+        if ($style_options['group_by']) {
       $group_type = $style_options['group_by'];
       $group_name = $row[$group_type]->content;
       if (!isset($objects[$group_name])) {
