@@ -96,9 +96,11 @@
   padding: 5px 6px;
   overflow: hidden;
 }
+/**
 #ui-theme-basic-grey .ui-menu-item-first {
-  //border-top: 1px solid #808080;
+  border-top: 1px solid #808080;
 }
+*/
 #ui-theme-basic-grey .ui-autocomplete-field-title,.ui-autocomplete-field {
    font-size: 1.3em;
    overflow: hidden;
