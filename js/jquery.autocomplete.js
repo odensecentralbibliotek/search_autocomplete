@@ -109,7 +109,7 @@
 		              $(".ui-autocomplete li.ui-menu-item:even").addClass("ui-menu-item-even");
 		            },
 		            select: function(event, ui) {
-                               $('<div class="search-overlay--wrapper"><div class="search-overlay--inner"><i class="icon-spinner icon-spin search-overlay--icon"></i><p class="search-overlay--text">' + Drupal.t('Searching please wait...') + '</p><p class="cancel"><a href="#">' + Drupal.t('Cancel') + '</a></p></div></div>').prependTo('body');
+                               $('<div class="search-overlay--wrapper"><div class="search-overlay--inner"><span class="icon-spinner icon-spin search-overlay--icon"></span><p class="search-overlay--text">' + Drupal.t('Searching please wait...') + '</p><p class="cancel"><a href="#">' + Drupal.t('Cancel') + '</a></p></div></div>').prependTo('body');
 		              if (Drupal.settings.search_autocomplete[key].auto_redirect == 1 && ui.item.link) {
 		                document.location.href = ui.item.link;
 		              } else if (Drupal.settings.search_autocomplete[key].auto_submit == 1 && ui.item.value && event.which != 13) {
